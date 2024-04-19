@@ -31,7 +31,7 @@ services:
   redis:
     image: redis
   nginx:
-    image: nginx:stable-alpine
+    image: nginx
     ports:
       - "8080:80"
     volumes:
