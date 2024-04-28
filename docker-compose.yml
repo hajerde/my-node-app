@@ -4,14 +4,13 @@ services:
     container_name: express-node-app-container
     build: .
     volumes:
-      - ./src:/app/src:
+      - ./src:/app/src:ro
     ports:
       - "4000:4000" 
     env_file:
       - ./.env 
     depends_on:
-      - mongo 
-      - redis 
+      - mongo  
   mongo:
     image: mongo
     restart: always
@@ -31,8 +30,6 @@ services:
         ME_CONFIG_MONGODB_URL: mongodb://db:example@mongo:27017/
      depends_on:
        - mongo  
-  redis:
-    image: redis
   nginx:
     image: nginx:stable-alpine
     ports:
